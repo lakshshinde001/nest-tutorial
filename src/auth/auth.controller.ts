@@ -4,6 +4,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './guards/local-auth/local-auth.guard';
 import { userInfo } from 'os';
 import { RefreshAuthGuard } from './guards/refresh-auth/refresh-auth.guard';
+import { JwtAuthGuard } from './guards/jwt-auth/jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -23,5 +24,11 @@ export class AuthController {
     refreshToken(@Req() req){
         return this.authService.refreshToken(req.user.id);
     }
- 
+    
+
+    @UseGuards(JwtAuthGuard)
+    @Post('signout')
+    signout(@Req() req){
+        this.authService.signOut(req.user.id)
+    }
 }

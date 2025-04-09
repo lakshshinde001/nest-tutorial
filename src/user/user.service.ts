@@ -15,6 +15,10 @@ export class UserService {
     return await this.userRepo.save(user);
   }
 
+  async updateHashedRefreshToken(userId : number, hashedRefreshToken : string){
+    return await this.userRepo.update({id : userId}, {hashedRefreshToken});
+  }
+
   async findByEmail (email : string){
     return await this.userRepo.findOne({
       where : {
