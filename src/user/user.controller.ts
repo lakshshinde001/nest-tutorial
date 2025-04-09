@@ -14,7 +14,7 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @UseGuards(AuthGuard('jwt')) // 👈 This activates your strategy
+  @UseGuards(AuthGuard('jwt')) 
   @Get('profile')
   getProfile(@Req() req) {
     console.log('req.user:', req.user); // 🔍
