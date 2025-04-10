@@ -14,9 +14,7 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @Post('login')
     async login (@Request() req) {
-        
         return this.authService.login(req.user.id)
-       
     }
 
     @UseGuards(RefreshAuthGuard)

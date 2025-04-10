@@ -34,7 +34,7 @@ export class UserService {
   findOne(id: number) {
     return this.userRepo.findOne({
       where: { id },
-      select: { id: true, email: true, firstName: true, password: false },
+      select: ["id", "firstName", "lastName", "email", "avatarUrl", "role"],
     });
   }
 
